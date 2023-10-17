@@ -14,12 +14,15 @@ import {
 export const product_router = Router();
 
 //for testing purpose only
-product_router.get('/product', (req: Request, res: Response) => {
-    res.send('Product router is working');
+product_router.get('/product', async(req: Request, res: Response) => {
+
+    const products = await ProductModel.find({});
+
+    res.send(products);
 })
 
 //set the product details 
-product_router.post('/product', auth, async (req: Request, res: Response) => {
+product_router.post('/product', async (req: Request, res: Response) => {
     try {
         const productData = req.body; // Make sure to validate and sanitize user input
 

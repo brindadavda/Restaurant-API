@@ -7,6 +7,7 @@ export interface I_Product extends Document{
     description: string;
     price: number;
     createdAt: Date;
+    invoiceId: String;
     // Add other product details here
   }
   
@@ -23,6 +24,10 @@ export const productSchema = new Schema<I_Product>({
     description: String,
     price: Number,
     createdAt: Date,
+    invoiceId: {
+      type : Object,
+      ref : 'Invoice'
+    },
     // Add other product details as needed
   });
 
